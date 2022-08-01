@@ -15,6 +15,6 @@ generateBtn.addEventListener("click", writePassword);
 
 
 function generatePassword() {
-window.prompt("Choose the length of your password from 8-128 characters");
-
+// window.prompt("Choose the length of your password from 8-128 characters");
+console.log("The button was clicked");
 };
