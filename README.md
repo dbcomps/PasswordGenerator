@@ -9,6 +9,7 @@ A site that allows you to generate a random password
 * JavaScript
 
 ## Website
+https://dbcomps.github.io/PasswordGenerator/
 
 ## Contributions
 Made by David
