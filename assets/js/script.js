@@ -24,9 +24,23 @@ generateBtn.addEventListener("click", writePassword);
 // function where all the code to generate a function
 function generatePassword() {
 	var passwordLength = prompt("Choose the length of your password from 8-128 characters");
-	
-	
+	// console.log(typeof passwordLength) is string - make integer
+	// passwordLength = parseInt(passwordLength);
+	// console.log(typeof passwordLength) now passwordLength is a number (int)
+	// what if they enter something that is not number?
+	// then we get Nan. Therefore check if what they entered is integer
+	console.log(passwordLength.length)
+	console.log(typeof passwordLength)
 	console.log(passwordLength);
+	console.log(parseInt(passwordLength))
+	console.log(typeof parseInt(passwordLength))
+
+	if(passwordLength.length == 0 || passwordLength.length > 3) {
+		var passwordLength = prompt("Enter a number between 8 and 128.");
+	} else {
+		passwordLength = parseInt(passwordLength)
+	return passwordLength;
+	} 
 
 return passwordLength;
 };
