@@ -14,11 +14,21 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-function generatePassword() {
-window.prompt("Choose the length of your password from 8-128 characters");
-console.log("The button was clicked");
+// var characterType = {
+// 	lowerCase = "",
+// 	upperCase = "",
+// 	numbers   = "",
+// 	special   = "",
+// };
 
-return "password";
+// function where all the code to generate a function
+function generatePassword() {
+	var passwordLength = prompt("Choose the length of your password from 8-128 characters");
+	
+	
+	console.log(passwordLength);
+
+return passwordLength;
 };
 
 // presented user with prompts for password criteria
