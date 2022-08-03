@@ -26,19 +26,27 @@ generatedPassword = "";
 // function where all the code to generate a function
 function generatePassword() {
 	var passwordLength = prompt("Choose the length of your password from 8-128 characters");
-			// if password is longer than 3 characters then ask again
-		if(passwordLength.length < 1 || passwordLength.length > 3) {
-			// ask again
-				alert("You must enter an integer between 8 and 128");
-				generatePassword();
-			}	else {
-						passwordLength = parseInt(passwordLength);
-			}
-		if(passwordLength < 8 || passwordLength > 128) { 
-			alert("This number needs to be between 8 and 128");
+		
+		// if password is longer than 3 characters or didn't enter then ask again
+	if(passwordLength.length < 1 || passwordLength.length > 3) {
+		// ask again
+		debugger
+			alert("You must enter an integer between 8 and 128");
 			generatePassword();
-			}
-			
+		}	else if (isNaN(parseInt(passwordLength))) {
+			alert("You must enter only integers. Thank you.");
+			generatePassword();
+		} else {
+				passwordLength = parseInt(passwordLength);
+				console.log(passwordLength)
+		};
+		
+		
+	if(passwordLength < 8 || passwordLength > 128) { 
+		alert("This number needs to be between 8 and 128");
+		generatePassword();
+		};
+	
 		
 	var	lowerCaseYesNo = confirm("Do you want to include lowercase letters in your password?");
 	if (lowerCaseYesNo) {
@@ -82,12 +90,6 @@ function generatePassword() {
 	return generatedPassword;			
 };		
 
-			
-	// console.log(typeof passwordLength) is string - make integer
-	// passwordLength = parseInt(passwordLength);
-	// console.log(typeof passwordLength) now passwordLength is a number (int)
-	// what if they enter something that is not number?
-	// then we get Nan. Therefore check if what they entered is integer
 
 
 
