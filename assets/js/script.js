@@ -25,25 +25,21 @@ generateBtn.addEventListener("click", writePassword);
 // function where all the code to generate a function
 function generatePassword() {
 	var passwordLength = prompt("Choose the length of your password from 8-128 characters");
-			
-	console.log(passwordLength.length)
-	console.log(typeof passwordLength)
-	console.log(passwordLength);
-	console.log(parseInt(passwordLength))
-	console.log(typeof parseInt(passwordLength))
 			// if password is longer than 3 characters then ask again
-	function testLength(passwordLength) {
-			if(passwordLength.length < 1 || passwordLength.length > 3) {
-				var passwordLength = prompt("Enter a number between 8 and 128.");
-			} else {
-				passwordLength = parseInt(passwordLength);
+		if(passwordLength.length < 1 || passwordLength.length > 3) {
+			// ask again
+				alert("You must enter an integer between 8 and 128");
+				generatePassword();
+			}	else {
+						passwordLength = parseInt(passwordLength);
 			}
-			return passwordLength;
-		}		
+
+	console.log(passwordLength);
+	console.log(passwordLength.length);	
+	console.log(typeof passwordLength);
+	return passwordLength;			
+};		
 			
-	console.log(testLength(passwordLength));		
-	return passwordLength;
-		};
 	// console.log(typeof passwordLength) is string - make integer
 	// passwordLength = parseInt(passwordLength);
 	// console.log(typeof passwordLength) now passwordLength is a number (int)
