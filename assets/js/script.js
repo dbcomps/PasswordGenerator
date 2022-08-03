@@ -33,6 +33,11 @@ function generatePassword() {
 			}	else {
 						passwordLength = parseInt(passwordLength);
 			}
+		if(passwordLength < 8 || passwordLength > 128) { 
+			alert("This number needs to be between 8 and 128");
+			generatePassword();
+			}
+			
 
 	console.log(passwordLength);
 	console.log(passwordLength.length);	
