@@ -52,30 +52,34 @@ function generatePassword() {
 			characterLength = characterLength + characterTypes.upperCase.length;
 	};
 	
+	var	numbersYesNo = confirm("Do you want to include numbers in your password?");
+	if (numbersYesNo) {
+			includedCharacters = includedCharacters.concat(characterTypes.numbers);
+			characterLength = characterLength + characterTypes.numbers.length;
+	};
+	
+	var	specialYesNo = confirm("Do you want to include special characters in your password?");
+	if (specialYesNo) {
+			includedCharacters = includedCharacters.concat(characterTypes.special);
+			characterLength = characterLength + characterTypes.special.length;
+	};
 	
 // var	upperCaseYesNo = confirm("Do you want to include uppercase letters in your password?");
 // 	var	numbersYesNo = confirm("Do you want to include numbers in your password?");
 // 	var	specialYesNo = confirm("Do you want to include special characters in your password?");
 	
 	var passwordText = new Array(passwordLength);
-// 	passwordText = characterTypes.lowerCase[1,2,3,4,5,6,7,8];
 	
  
- 		for(var i = 0; i < passwordLength; i++) {
- 		generatedPassword = generatedPassword + includedCharacters[Math.floor(Math.random() * characterLength )];
- 		}
+	for(var i = 0; i < passwordLength; i++) {
+	generatedPassword = generatedPassword + includedCharacters[Math.floor(Math.random() * characterLength )];
+	}
  		
  		console.log(generatedPassword);
  		console.log(characterLength)
 
 	
-	
-//console.log(characterTypes(1))
-// 	console.log(passwordText[1])
-	console.log(passwordLength);
-	console.log(passwordLength.length);	
-	console.log(typeof passwordLength);
-	return passwordLength;			
+	return generatedPassword;			
 };		
 
 			
