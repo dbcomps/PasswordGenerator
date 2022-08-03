@@ -14,12 +14,12 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-// var characterType = {
-// 	lowerCase = "",
-// 	upperCase = "",
-// 	numbers   = "",
-// 	special   = "",
-// };
+var characterTypes = {
+	lowerCase: "abcdefghijklmnopqrstuvwxyz".split(""),
+	upperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
+	numbers: "123456789".split(""),
+	special: "!@#$%^&*".split("")
+};
 
 
 // function where all the code to generate a function
@@ -37,8 +37,18 @@ function generatePassword() {
 			alert("This number needs to be between 8 and 128");
 			generatePassword();
 			}
-			
-
+		
+	var	lowerCaseYesNo = confirm("Do you want to include lowercase letters in your password?");
+	var	upperCaseYesNo = confirm("Do you want to include uppercase letters in your password?");
+	var	numbersYesNo = confirm("Do you want to include numbers in your password?");
+	var	specialYesNo = confirm("Do you want to include special characters in your password?");
+	
+	// var passwordText = [];
+// 	while lowerCaseYesNo {
+// 		passwordText = passwordText;
+// 	}
+	
+	
 	console.log(passwordLength);
 	console.log(passwordLength.length);	
 	console.log(typeof passwordLength);
