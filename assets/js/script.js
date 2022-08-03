@@ -32,7 +32,6 @@ function generatePassword() {
 		// if password is longer than 3 characters or didn't enter then ask again
 	if(passwordLength.length < 1 || passwordLength.length > 3) {
 		// ask again
-		debugger
 			alert("You must enter an integer between 8 and 128");
 			passwordLength = undefined;
 			generatePassword();
@@ -46,66 +45,62 @@ function generatePassword() {
 		};
 		
 		
-	if(passwordLength < 8 || passwordLength > 128) { 
-		alert("This number needs to be between 8 and 128");
+	if(passwordLength > 7 && passwordLength < 129) { 
+	
+			includedCharacters = [];
+			var	characterLength = 0; // initialize so if lowerCase not chosen then no error
+		
+			var	lowerCaseYesNo = confirm("Do you want to include lowercase letters in your password?");
+			if (lowerCaseYesNo) {
+					includedCharacters = includedCharacters.concat(characterTypes.lowerCase);
+					characterLength = characterTypes.lowerCase.length;
+			};
+	
+			var	upperCaseYesNo = confirm("Do you want to include uppercase letters in your password?");
+			if (upperCaseYesNo) {
+					includedCharacters = includedCharacters.concat(characterTypes.upperCase);
+					characterLength = characterLength + characterTypes.upperCase.length;
+			};
+	
+			var	numbersYesNo = confirm("Do you want to include numbers in your password?");
+			if (numbersYesNo) {
+					includedCharacters = includedCharacters.concat(characterTypes.numbers);
+					characterLength = characterLength + characterTypes.numbers.length;
+			};
+	
+			var	specialYesNo = confirm("Do you want to include special characters in your password?");
+			if (specialYesNo) {
+					includedCharacters = includedCharacters.concat(characterTypes.special);
+					characterLength = characterLength + characterTypes.special.length;
+			};
+	
+			// validate at least one character type chosen
+			if (includedCharacters.length < 1 ) {
+					alert("You must pick some kind of characters to include in your password. Lets try again.")
+					generatePassword();
+			}
+	
+			// var passwordText = new Array(passwordLength);
+	
+			generatedPassword = ""; //starts as empty to add characters
+ 
+			for(var i = 0; i < passwordLength; i++) {
+			generatedPassword = generatedPassword + includedCharacters[Math.floor(Math.random() * characterLength )];
+			}
+ 	
+ 	 } else {
+ 		alert("This number needs to be between 8 and 128");
 		passwordLength = undefined;
 		generatePassword();
 		};
-	
-	includedCharacters = [];
-	var	characterLength = 0;
-		
-	var	lowerCaseYesNo = confirm("Do you want to include lowercase letters in your password?");
-	if (lowerCaseYesNo) {
-			includedCharacters = includedCharacters.concat(characterTypes.lowerCase);
-			characterLength = characterTypes.lowerCase.length;
-	};
-	
-	var	upperCaseYesNo = confirm("Do you want to include uppercase letters in your password?");
-	if (upperCaseYesNo) {
-			includedCharacters = includedCharacters.concat(characterTypes.upperCase);
-			characterLength = characterLength + characterTypes.upperCase.length;
-	};
-	
-	var	numbersYesNo = confirm("Do you want to include numbers in your password?");
-	if (numbersYesNo) {
-			includedCharacters = includedCharacters.concat(characterTypes.numbers);
-			characterLength = characterLength + characterTypes.numbers.length;
-	};
-	
-	var	specialYesNo = confirm("Do you want to include special characters in your password?");
-	if (specialYesNo) {
-			includedCharacters = includedCharacters.concat(characterTypes.special);
-			characterLength = characterLength + characterTypes.special.length;
-	};
-	
-	if (includedCharacters.length < 1 ) {
-			alert("You must pick some kind of characters to include in your password. Lets try again.")
-			generatePassword();
-	}
-	
-// 	var passwordText = new Array(passwordLength);
-	
-	generatedPassword = "";
- 
-	for(var i = 0; i < passwordLength; i++) {
-	generatedPassword = generatedPassword + includedCharacters[Math.floor(Math.random() * characterLength )];
-	}
  		
- 		console.log(generatedPassword);
- 		console.log(characterLength)
+	console.log(generatedPassword);
+	console.log(characterLength);
 
 	
 	return generatedPassword;
+	
+	
 };		
 
 
-
-
-// presented user with prompts for password criteria
-// 1. prompt for the length of the password. between 8 and 128 characters
-// 2. prompt for including types of characters
-	// a. make an array of types of characters?
-			// lowercase, uppercase, numeric, and/or special characters
-// 3. validate input and at least one character type should be chosen
-// 4. return password
