@@ -78,7 +78,7 @@ function generatePassword() {
 			if (includedCharacters.length < 1 ) {
 					alert("You must pick some kind of characters to include in your password. Lets try again.")
 					generatePassword();
-			}
+			};
 	
 			// var passwordText = new Array(passwordLength);
 	
@@ -86,7 +86,7 @@ function generatePassword() {
  
 			for(var i = 0; i < passwordLength; i++) {
 			generatedPassword = generatedPassword + includedCharacters[Math.floor(Math.random() * characterLength )];
-			}
+			};
  	
  	 } else {
  		alert("This number needs to be between 8 and 128");
