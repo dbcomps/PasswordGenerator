@@ -7,6 +7,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  password = undefined;	// reset after clicks
 
 }
 
@@ -20,11 +21,12 @@ var characterTypes = {
 	numbers: "123456789".split(""),
 	special: "!@#$%^&*".split("")
 };
-includedCharacters = [];
-generatedPassword = "";
+
 
 // function where all the code to generate a function
 function generatePassword() {
+	
+	
 	var passwordLength = prompt("Choose the length of your password from 8-128 characters");
 		
 		// if password is longer than 3 characters or didn't enter then ask again
@@ -32,9 +34,11 @@ function generatePassword() {
 		// ask again
 		debugger
 			alert("You must enter an integer between 8 and 128");
+			passwordLength = undefined;
 			generatePassword();
 		}	else if (isNaN(parseInt(passwordLength))) {
 			alert("You must enter only integers. Thank you.");
+			passwordLength = undefined;
 			generatePassword();
 		} else {
 				passwordLength = parseInt(passwordLength);
@@ -44,9 +48,12 @@ function generatePassword() {
 		
 	if(passwordLength < 8 || passwordLength > 128) { 
 		alert("This number needs to be between 8 and 128");
+		passwordLength = undefined;
 		generatePassword();
 		};
 	
+	includedCharacters = [];
+	var	characterLength = 0;
 		
 	var	lowerCaseYesNo = confirm("Do you want to include lowercase letters in your password?");
 	if (lowerCaseYesNo) {
@@ -72,12 +79,14 @@ function generatePassword() {
 			characterLength = characterLength + characterTypes.special.length;
 	};
 	
-// var	upperCaseYesNo = confirm("Do you want to include uppercase letters in your password?");
-// 	var	numbersYesNo = confirm("Do you want to include numbers in your password?");
-// 	var	specialYesNo = confirm("Do you want to include special characters in your password?");
+	if (includedCharacters.length < 1 ) {
+			alert("You must pick some kind of characters to include in your password. Lets try again.")
+			generatePassword();
+	}
 	
-	var passwordText = new Array(passwordLength);
+// 	var passwordText = new Array(passwordLength);
 	
+	generatedPassword = "";
  
 	for(var i = 0; i < passwordLength; i++) {
 	generatedPassword = generatedPassword + includedCharacters[Math.floor(Math.random() * characterLength )];
@@ -87,7 +96,7 @@ function generatePassword() {
  		console.log(characterLength)
 
 	
-	return generatedPassword;			
+	return generatedPassword;
 };		
 
 
